@@ -1,0 +1,105 @@
+body{
+	background-image: url("../images/woodBG.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+    color: #2b2b2b;
+	font-family: Tahoma, Arial, sans-serif; 
+}
+
+#logo{
+	    float: right;
+		width: 200px;
+		height: 200px;
+		margin: 10px;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 600;
+}
+
+h1 {
+	font-family: Helvetica, sans-serif;
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	text-indent: 50px;
+	text-shadow: 2px 2px 4px black, 0 0 25px yellow;
+	line-height: 3.0;
+}
+
+.story {
+		background-color: #FAE9DA;
+		padding: 10px 10px;
+		text-align: center;
+		opacity: 0.8;
+}
+
+.story-img {
+		width: 400px;
+		height: auto;        
+		border-radius: 10px;
+		box-shadow: 0 4px 12px black;
+}
+
+
+.call2action{
+			  background-color: #FF7A59;
+			  color: #ffffff;
+}
+
+.menu-main {
+	background-color:#FAE9DA;
+	padding: 2rem 1rem;
+	max-width: 1100px;
+	margin: auto;
+}
+
+.category {
+  margin-bottom: 2rem;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+  border-bottom: 1px solid black;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #563232;
+  display: flex;
+  justify-content: left;
+  opacity: 0.8;
+}
+
+ul li a {
+  display: block;
+  color: white;
+  padding: 15px 24px;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  background-color: #111111;
+}
+
+
+@media (max-width: 900px) {
+  .story-content {
+    flex-direction: column;
+  }
+
+@media (max-width: 600px) {
+ 
+}
