@@ -1,6 +1,6 @@
 /* --- Global --- */
 body{
-	background-image: url("../images/woodBG.jpg");
+	background-image: url("../images/WoodBG.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -254,3 +254,4 @@ footer a {
     color: white;
     text-decoration: none;
 }
+
