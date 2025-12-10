@@ -21,24 +21,114 @@
 	</nav>
 </header>
 <body>
-	 
-	<main class="cta-main">
-		
+<script>
+function formValidate() {
+	const phoneRegex = /^[0-9]{10}$/; //RegEx for 10 Digits Number, can replace with "/^\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})$/" for various forms of US Phone Number
+	const zipRegex = /^\d{5}$/; // RegEx for exactly 5 Digits Number
+	const a = document.forms["ctaForm"]["order_fname"].value;
+	const b = document.forms["ctaForm"]["order_lname"].value;
+	const c = document.forms["ctaForm"]["order_phone"].value;
+	const d = document.forms["ctaForm"]["delivery_address"].value;
+	const e = document.forms["ctaForm"]["city_address"].value;
+	const f = document.forms["ctaForm"]["zip_address"].value;
+	
+	// Function to capitalize the first letter
+	const capitalize = (str) => {
+		if (!str) return "";
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+	
+	// Ensuring that customer ordered at least 1 item
+	const qty1 = parseInt(document.forms["ctaForm"]["item1_qty"].value);
+    const qty2 = parseInt(document.forms["ctaForm"]["item2_qty"].value);
+    const qty3 = parseInt(document.forms["ctaForm"]["item3_qty"].value);
+    const qty4 = parseInt(document.forms["ctaForm"]["item4_qty"].value);
+    const qty5 = parseInt(document.forms["ctaForm"]["item5_qty"].value);
+	
+	// Calculate total items ordered
+	const totalItems = qty1 + qty2 + qty3 + qty4 + qty5;
+	
+	// First Name Validation
+	if (a == "") {
+		alert("First Name must be filled out");
+		return false;
+	} else {
+		const capitalizedFName = capitalize(a);
+		document.forms["ctaForm"]["order_fname"].value = capitalizedFName; // Capitalized first name
+	}
+	// Last Name Validation
+	if (b == "") {
+		alert("Last Name must be filled out");
+		return false;
+	} else {
+		const capitalizedLName = capitalize(b);
+		document.forms["ctaForm"]["order_lname"].value = capitalizedLName; // Capitalized last name
+	}
+	// Phone Number Validation
+	if (c == "") {
+		alert("Phone number must be filled out");
+		return false;
+	} else if (!phoneRegex.test(c)) {
+			alert("Please enter 10-digits phone number");
+			return false;
+		}
+	// Address Validation
+	if (d == "") {
+		alert("Address field must be filled out");
+		return false;
+	}
+	// City Name Validation
+	if (e == "") {
+		alert("City field must be filled out");
+		return false;
+	} else {
+		const capitalizedCName = capitalize(e);
+		document.forms["ctaForm"]["city_address"].value = capitalizedCName; // Capitalized City name
+	}
+	// Zip Code Validation
+	if (f == "") {
+		alert("Zip Code field must be filled out");
+		return false;
+	} else if (!zipRegex.test(f)) { 
+		alert("Please enter exactly 5 digits Zip Code");
+		return false;
+	}
+	// Validating Number of items ordered
+	if (totalItems < 1) {
+        alert("Please order at least one item to proceed");
+        return false;
+	}
+	
+	// If all passes
+	return alert("Thank you for patronage")
+}
+</script>
+	<main class="cta-main">	
 		<section class="order-form-section">
 			<a id="order"></a> 
 			<h3>Place Your Online Order</h3>
 			
-			<form action="/submit-order.html" class="order-form">
+			<form name="ctaForm" onsubmit="return formValidate()" method="post" form action="./submit-order.html" class="order-form">
 				<fieldset>
 					<legend>Contact Information</legend>
-					<label for="order-name">Full Name:</label>
-					<input type="text" id="order-name" name="order_name" required>
+					<label for="order-name">First Name:</label>
+					<input type="text" id="order-name" name="order_fname">
+					
+					<label for="order-name">Last Name:</label>
+					<input type="text" id="order-name" name="order_lname">
 					
 					<label for="order-phone">Phone:</label>
-					<input type="tel" id="order-phone" name="order_phone" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number.">
+					<input type="tel" id="order-phone" name="order_phone">
 					
 					<label for="delivery">Delivery Address:</label>
-					<textarea id="delivery" name="delivery_address" rows="3" required placeholder="Street, City, Zip Code..."></textarea>
+					<textarea id="delivery" name="delivery_address" rows="3" placeholder="No., Street"></textarea>
+					<p>
+					<label for="city">City:</label>
+					<input type="text" id="city-address" name="city_address">
+					
+					<label for="zip">Zip Code:</label>
+					<input type="text" id="zip-address" name="zip_address">
+					
 				</fieldset>
 				
 				<fieldset>
@@ -62,7 +152,7 @@
 					<textarea id="notes" name="order_notes" rows="2"></textarea>
 				</fieldset>
 				
-				<button type="submit" class="call2action">Submit Order</button>
+				<input type="submit" value="Place Order">
 			</form>
 		</section>
 
